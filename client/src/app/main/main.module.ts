@@ -11,6 +11,7 @@ import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {SharedModule} from '../shared/shared.module';
 import {HttpClient} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {MAT_MODULES} from './mat-modules';
 
 
 export function HttpLoaderFactory(http: HttpClient): any {
@@ -22,6 +23,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
   imports: [
     CommonModule,
     MainRoutingModule,
+    ...MAT_MODULES,
     SharedModule,
     TranslateModule.forRoot(
       {
