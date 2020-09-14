@@ -7,13 +7,32 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { MainComponent } from './main.component';
 import { EventsComponent } from './events/events.component';
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {SharedModule} from '../shared/shared.module';
+import {HttpClient} from '@angular/common/http';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
+
+export function HttpLoaderFactory(http: HttpClient): any {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, HomeComponent, MainComponent, EventsComponent],
   imports: [
     CommonModule,
-    MainRoutingModule
+    MainRoutingModule,
+    SharedModule,
+    TranslateModule.forRoot(
+      {
+        defaultLanguage: 'de',
+        loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+        }
+      }
+    )
   ]
 })
 export class MainModule { }
