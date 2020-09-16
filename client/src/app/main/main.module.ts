@@ -21,21 +21,21 @@ export function HttpLoaderFactory(http: HttpClient): any {
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, HomeComponent, MainComponent, EventsComponent, PhotoComponent],
-  imports: [
-    CommonModule,
-    MainRoutingModule,
-    ...MAT_MODULES,
-    SharedModule,
-    TranslateModule.forRoot(
-      {
-        defaultLanguage: 'de',
-        loader: {
-          provide: TranslateLoader,
-          useFactory: HttpLoaderFactory,
-          deps: [HttpClient]
-        }
-      }
-    )
-  ]
+    imports: [
+        CommonModule,
+        MainRoutingModule,
+        ...MAT_MODULES,
+        SharedModule,
+        TranslateModule.forRoot(
+            {
+                defaultLanguage: 'de',
+                loader: {
+                    provide: TranslateLoader,
+                    useFactory: HttpLoaderFactory,
+                    deps: [HttpClient]
+                }
+            }
+        )
+    ]
 })
 export class MainModule { }
