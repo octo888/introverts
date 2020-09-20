@@ -13,11 +13,14 @@ import {HttpClient} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {MAT_MODULES} from './mat-modules';
 import {EventDetailsComponent} from './pages/event-details/event-details.component';
+import {APP_LANG, LANG_TOKEN} from './constants/constants';
 
 
 export function HttpLoaderFactory(http: HttpClient): any {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
+const currLang = localStorage.getItem(LANG_TOKEN) || APP_LANG.DE;
 
 @NgModule({
   declarations: [
@@ -35,7 +38,7 @@ export function HttpLoaderFactory(http: HttpClient): any {
     SharedModule,
     TranslateModule.forRoot(
       {
-        defaultLanguage: 'de',
+        defaultLanguage: currLang,
         loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,

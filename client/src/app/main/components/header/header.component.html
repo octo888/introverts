@@ -8,14 +8,14 @@
   </div>
 
   <span class="example-spacer"></span>
-  <button mat-icon-button >
-    EN
+  <button mat-icon-button (click)="onLangChange()"  class="text-uppercase">
+    {{currLang}}
   </button>
 </mat-toolbar>
 <mat-menu #menu="matMenu">
   <button routerLink="/events" mat-menu-item>
     <mat-icon>event</mat-icon>
-    <span>{{'events' | translate}}</span>
+    <span class="text-uppercase">{{'events' | translate}}</span>
   </button>
 </mat-menu>
 
