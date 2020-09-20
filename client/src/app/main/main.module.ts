@@ -12,7 +12,6 @@ import {SharedModule} from '../shared/shared.module';
 import {HttpClient} from '@angular/common/http';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {MAT_MODULES} from './mat-modules';
-import {PhotoComponent} from './pages/photo/photo.component';
 import {EventDetailsComponent} from './pages/event-details/event-details.component';
 
 
@@ -21,7 +20,14 @@ export function HttpLoaderFactory(http: HttpClient): any {
 }
 
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, HomeComponent, MainComponent, EventsComponent, PhotoComponent, EventDetailsComponent],
+  declarations: [
+    HeaderComponent,
+    FooterComponent,
+    HomeComponent,
+    MainComponent,
+    EventsComponent,
+    EventDetailsComponent
+  ],
   imports: [
     CommonModule,
     MainRoutingModule,
