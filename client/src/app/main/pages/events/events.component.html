@@ -1,5 +1,5 @@
 <mat-list >
-  <div mat-subheader>{{'events' | translate}}</div>
+  <div class="text-uppercase pl-0" mat-subheader>{{'events' | translate}}</div>
   <mat-list-item class="cursor-pointer" *ngFor="let event of list" routerLink="/event/{{event.id}}">
     <mat-icon mat-list-icon>event</mat-icon>
     <div mat-line class="d-flex justify-content-around">
