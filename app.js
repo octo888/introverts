@@ -3,6 +3,9 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const { Sequelize } = require('sequelize');
+const dbKeys = require('./config/keys');
+const sequelize = new Sequelize(dbKeys.dbConnectionString);
 
 const indexRouter = require('./routes/index');
 const app = express();
@@ -12,6 +15,15 @@ const cors = require('cors')
 const corsOptions = {
   origin: 'http://localhost:4200',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+
+
+try {
+  sequelize.authenticate();
+  console.log('Connection has been established successfully.');
+} catch (error) {
+  console.error('Unable to connect to the database:', error);
 }
 
 app.use(cors(corsOptions));
